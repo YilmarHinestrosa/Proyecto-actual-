@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liga Amateur de Fútbol - Sistema de Gestión</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="app-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path d="M2 12h20"></path>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>LIGA MUNICIPAL</h1>
+                    <span>Fútbol Amateur</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <button class="menu-item active" data-section="dashboard">
+                    <span class="menu-icon">📊</span> Panel Principal
+                </button>
+                <button class="menu-item" data-section="torneos">
+                    <span class="menu-icon">🏆</span> Torneos
+                </button>
+                <button class="menu-item" data-section="equipos">
+                    <span class="menu-icon">🛡️</span> Equipos
+                </button>
+                <button class="menu-item" data-section="jugadores">
+                    <span class="menu-icon">🏃</span> Jugadores
+                </button>
+                <button class="menu-item" data-section="sedes">
+                    <span class="menu-icon">📍</span> Sedes Deportivas
+                </button>
+                <button class="menu-item" data-section="partidos">
+                    <span class="menu-icon">📅</span> Partidos & Marcador
+                </button>
+                <button class="menu-item" data-section="posiciones">
+                    <span class="menu-icon">📈</span> Tabla de Posiciones
+                </button>
+                <button class="menu-item" data-section="calendario">
+                    <span class="menu-icon">🗓️</span> Calendario Mensual
+                </button>
+                <div class="menu-divider">Módulo de Ingeniería</div>
+                <button class="menu-item" data-section="sql">
+                    <span class="menu-icon">💻</span> Consola SQL Sim
+                </button>
+                <button class="menu-item" data-section="docs">
+                    <span class="menu-icon">📚</span> Documentación MER
+                </button>
+            </nav>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar">AD</div>
+                <div class="user-info">
+                    <h4>Carlos Mendoza</h4>
+                    <span>Administrador</span>
+                </div>
+                <button class="btn-logout" id="logoutBtn" title="Cerrar Sesión">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- HEADER -->
+            <header class="app-header">
+                <div class="header-search">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="globalSearch" placeholder="Buscar equipos, jugadores, partidos...">
+                </div>
+                <div class="header-actions">
+                    <div class="system-time" id="systemTime">09 de Junio de 2026</div>
+                    <button class="theme-toggle" id="themeToggleBtn" title="Cambiar Tema">
+                        <span class="toggle-icon">🌙</span>
+                    </button>
+                    <div class="notification-badge">
+                        <span class="badge-icon">🔔</span>
+                        <span class="badge-count">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- VIEW SECTIONS CONTAINER -->
+            <div class="sections-wrapper">
+                
+                <!-- LOGIN SCREEN (OVERLAY IF NOT LOGGED IN, BUT CAN BE TOGGLED FOR CONVENIENCE) -->
+                <div id="login-overlay" class="login-overlay hidden">
+                    <div class="login-card">
+                        <div class="login-header">
+                            <span class="login-logo">⚽</span>
+                            <h2>Ingreso al Sistema</h2>
+                            <p>Gestión de la Liga Amateur de Fútbol</p>
+                        </div>
+                        <form id="loginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="loginEmail">Correo Electrónico</label>
+                                <input type="email" id="loginEmail" placeholder="admin@liga.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Contraseña</label>
+                                <input type="password" id="loginPassword" placeholder="••••••••" required>
+                            </div>
+                            <button type="submit" class="btn-primary w-full">Iniciar Sesión</button>
+                            <div class="login-demo-info">
+                                <p><strong>Credenciales Demo:</strong></p>
+                                <p>Email: <code>carlos.admin@liga.com</code> | Clave: <code>admin123</code></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- SECTION: DASHBOARD -->
+                <section id="section-dashboard" class="content-section active">
+                    <div class="section-header">
+                        <div>
+                            <h2>Panel de Control</h2>
+                            <p>Resumen general del campeonato y accesos directos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-soft-primary">🏆</div>
+                            <div class="stat-info">
+                                <h3 id="stat-tournaments">3</h3>
+                                <p>Torneos Activos</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bg-soft-success">🛡️</div>
+                            <div class="stat-info">
+                                <h3 id="stat-teams">10</h3>
+                                <p>Equipos Registrados</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bg-soft-warning">🏃</div>
+                            <div class="stat-info">
+                                <h3 id="stat-players">30</h3>
+                                <p>Jugadores Inscritos</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon bg-soft-info">📍</div>
+                            <div class="stat-info">
+                                <h3 id="stat-venues">5</h3>
+                                <p>Sedes Deportivas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Upcoming Matches -->
+                        <div class="dashboard-card main-card">
+                            <div class="card-header">
+                                <h3>📅 Próximos Partidos Planificados</h3>
+                                <button class="btn-text" onclick="switchSection('partidos')">Ver Fixture</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="dashboardMatchesTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Torneo</th>
+                                                <th>Partido</th>
+                                                <th>Sede</th>
+                                                <th>Hora</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Dynamically filled -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Teams Standings preview -->
+                        <div class="dashboard-card side-card">
+                            <div class="card-header">
+                                <h3>📈 Tabla Resumen (Líderes)</h3>
+                                <button class="btn-text" onclick="switchSection('posiciones')">Ver Tabla Completa</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="leaderboard-list" id="dashboardLeaderboard">
+                                    <!-- Dynamically filled -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: TORNEOS -->
+                <section id="section-torneos" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Gestión de Torneos</h2>
+                            <p>Crea campeonatos, edítalos e inscribe equipos participantes.</p>
+                        </div>
+                        <button class="btn-primary" onclick="openModal('tournamentModal')">+ Nuevo Torneo</button>
+                    </div>
+
+                    <div class="grid-layout">
+                        <!-- List of tournaments -->
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table" id="tournamentsTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre del Torneo</th>
+                                                <th>Fecha Inicio</th>
+                                                <th>Fecha Fin</th>
+                                                <th>Equipos Inscritos</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: EQUIPOS -->
+                <section id="section-equipos" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Gestión de Equipos</h2>
+                            <p>Administra los clubes, sus delegados y detalles de contacto.</p>
+                        </div>
+                        <button class="btn-primary" onclick="openModal('teamModal')">+ Nuevo Equipo</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="teamsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre del Equipo</th>
+                                            <th>Representante</th>
+                                            <th>Contacto</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: JUGADORES -->
+                <section id="section-jugadores" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Gestión de Jugadores</h2>
+                            <p>Registro de fichajes e inscripción en equipos para torneos activos.</p>
+                        </div>
+                        <div class="header-buttons">
+                            <button class="btn-secondary mr-2" onclick="openModal('enrollPlayerModal')">🔗 Inscribir en Torneo</button>
+                            <button class="btn-primary" onclick="openModal('playerModal')">+ Nuevo Jugador</button>
+                        </div>
+                    </div>
+
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label>Filtrar por Equipo (Inscritos):</label>
+                            <select id="filterPlayerTeam" onchange="filterPlayersList()">
+                                <option value="all">-- Todos los Equipos --</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="playersTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Cédula/Documento</th>
+                                            <th>Nombre Completo</th>
+                                            <th>Fecha Nac.</th>
+                                            <th>Teléfono</th>
+                                            <th>Equipo Actual (Torneo 1)</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: SEDES -->
+                <section id="section-sedes" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Sedes Deportivas</h2>
+                            <p>Administra los campos de juego municipales, polideportivos y ubicaciones.</p>
+                        </div>
+                        <button class="btn-primary" onclick="openModal('venueModal')">+ Nueva Sede</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="venuesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre de la Sede</th>
+                                            <th>Dirección</th>
+                                            <th>Capacidad (Espectadores)</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: PARTIDOS -->
+                <section id="section-partidos" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Programación de Partidos & Resultados</h2>
+                            <p>Agenda fixture validando colisiones de sedes o equipos en tiempo real, e ingresa marcadores.</p>
+                        </div>
+                        <button class="btn-primary" onclick="openModal('matchModal')">📅 Programar Partido</button>
+                    </div>
+
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label>Torneo:</label>
+                            <select id="filterMatchTournament" onchange="filterMatchesList()">
+                                <option value="1">Torneo Apertura Liga Municipal 2026</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Fecha:</label>
+                            <input type="date" id="filterMatchDate" onchange="filterMatchesList()">
+                        </div>
+                        <button class="btn-text" onclick="clearMatchFilters()">Limpiar Filtros</button>
+                        <button class="btn-secondary" onclick="exportMatchesToCSV()" style="margin-left: auto;">📥 Exportar Fixture (CSV)</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="matchesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Fecha/Hora</th>
+                                            <th>Sede</th>
+                                            <th>Local</th>
+                                            <th>Marcador</th>
+                                            <th>Visitante</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: POSICIONES -->
+                <section id="section-posiciones" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Tabla de Posiciones Automática</h2>
+                            <p>Cálculo automático de puntos y estadísticas basado en partidos finalizados.</p>
+                        </div>
+                    </div>
+
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <label>Seleccionar Torneo:</label>
+                            <select id="standingsTournamentSelect" onchange="loadStandingsTable()">
+                                <option value="1">Torneo Apertura Liga Municipal 2026</option>
+                            </select>
+                        </div>
+                        <button class="btn-secondary" onclick="exportStandingsToCSV()" style="margin-left: auto;">📥 Exportar Tabla (CSV)</button>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped" id="standingsTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Pos</th>
+                                            <th>Equipo</th>
+                                            <th>PJ</th>
+                                            <th>PG</th>
+                                            <th>PE</th>
+                                            <th>PP</th>
+                                            <th>GF</th>
+                                            <th>GC</th>
+                                            <th>DG</th>
+                                            <th class="text-primary font-bold">PTS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: CALENDARIO -->
+                <section id="section-calendario" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Calendario de Partidos</h2>
+                            <p>Visualización mensual detallada de partidos programados y resultados.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="calendar-controls" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                                <button class="btn-secondary" id="calPrevMonthBtn" type="button">◀ Anterior</button>
+                                <h3 id="calendarMonthTitle" style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.25rem;">Junio 2026</h3>
+                                <button class="btn-secondary" id="calNextMonthBtn" type="button">Siguiente ▶</button>
+                            </div>
+                            
+                            <div class="calendar-grid-container">
+                                <div class="calendar-weekdays" style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--primary); font-size: 0.85rem; text-transform: uppercase;">
+                                    <div>Dom</div>
+                                    <div>Lun</div>
+                                    <div>Mar</div>
+                                    <div>Mie</div>
+                                    <div>Jue</div>
+                                    <div>Vie</div>
+                                    <div>Sab</div>
+                                </div>
+                                <div id="calendarDaysGrid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; min-height: 400px;">
+                                    <!-- Days filled dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: SQL CONSOLE SIMULATOR -->
+                <section id="section-sql" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Consola de Simulación SQL</h2>
+                            <p>Visualiza y ejecuta consultas SQL directamente sobre la base de datos simulada en memoria.</p>
+                        </div>
+                    </div>
+
+                    <div class="sql-simulator-layout">
+                        <div class="sql-sidebar">
+                            <h3>Consultas Disponibles</h3>
+                            <ul class="sql-queries-list">
+                                <li onclick="loadSQLQuery('partidos_sedes')">1. Partidos con Sede y Equipos</li>
+                                <li onclick="loadSQLQuery('partidos_torneo')">2. Buscar Partidos por Torneo</li>
+                                <li onclick="loadSQLQuery('partidos_fecha')">3. Buscar Partidos por Fecha</li>
+                                <li onclick="loadSQLQuery('partidos_equipo')">4. Buscar Partidos por Equipo</li>
+                                <li onclick="loadSQLQuery('jugadores_equipo')">5. Mostrar Jugadores de Equipo</li>
+                                <li onclick="loadSQLQuery('equipos_torneo')">6. Mostrar Equipos de un Torneo</li>
+                                <li onclick="loadSQLQuery('resultados')">7. Resultados de Partidos</li>
+                                <li onclick="loadSQLQuery('tabla_posiciones')">8. Generar Tabla de Posiciones Completa</li>
+                            </ul>
+                        </div>
+                        <div class="sql-console-panel">
+                            <div class="console-header">
+                                <span>MySQL Editor</span>
+                                <button class="btn-success btn-sm" id="runSqlQueryBtn">▶ Ejecutar Consulta</button>
+                            </div>
+                            <div class="console-editor">
+                                <textarea id="sqlQueryTextarea" readonly></textarea>
+                            </div>
+                            <div class="console-result">
+                                <h4>Resultado de la Consulta</h4>
+                                <div id="sqlQueryResultContainer" class="table-responsive result-table">
+                                    <p class="text-muted">Selecciona una consulta del listado y haz clic en "Ejecutar Consulta" para ver el resultado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: DOCUMENTATION AND MER DIAGRAMS -->
+                <section id="section-docs" class="content-section">
+                    <div class="section-header">
+                        <div>
+                            <h2>Documentación Técnica y Modelos</h2>
+                            <p>Estructura de base de datos relacional y arquitectura del sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="docs-tabs">
+                        <button class="doc-tab-btn active" onclick="switchDocTab('analisis')">Análisis</button>
+                        <button class="doc-tab-btn" onclick="switchDocTab('mer')">MER & Modelo Relacional</button>
+                        <button class="doc-tab-btn" onclick="switchDocTab('mvc')">Arquitectura MVC</button>
+                        <button class="doc-tab-btn" onclick="switchDocTab('casos_uso')">Casos de Uso</button>
+                    </div>
+
+                    <div class="docs-content-container card">
+                        <div class="card-body">
+                            <!-- Tab: Análisis -->
+                            <div id="doc-tab-analisis" class="doc-tab-panel active">
+                                <h3>Análisis del Sistema</h3>
+                                <p>La <strong>Liga Amateur de Fútbol Municipal</strong> requería pasar de un manejo informal mediante hojas de cálculo a un software robusto. Los principales cuellos de botella identificados son:</p>
+                                <ul>
+                                    <li><strong>Superposición de horarios en sedes:</strong> Dos o más partidos planificados en la misma cancha de forma simultánea.</li>
+                                    <li><strong>Fuga/Duplicidad de jugadores:</strong> Deportistas jugando en diferentes equipos en la misma temporada del torneo, restando seriedad e infringiendo normas.</li>
+                                    <li><strong>Cálculo erróneo de clasificaciones:</strong> Suma manual lenta y propensa a fallos de puntos, goles y desempates.</li>
+                                </ul>
+                                <h4>Reglas de Negocio Codificadas</h4>
+                                <div class="rules-box">
+                                    <div class="rule-item"><strong>Regla 1:</strong> No se pueden programar dos partidos en la misma sede el mismo día y hora (Restricción UNIQUE compuesta y alertas de cruce).</div>
+                                    <div class="rule-item"><strong>Regla 2:</strong> Un equipo no puede jugar dos partidos el mismo día dentro del mismo torneo (Trigger e interceptor).</div>
+                                    <div class="rule-item"><strong>Regla 3:</strong> Un jugador no puede pertenecer a dos equipos diferentes en el mismo torneo (Restricción UNIQUE jugador_torneo).</div>
+                                    <div class="rule-item"><strong>Regla 4:</strong> Solo se pueden registrar resultados de partidos programados o en juego (CHECK de estado).</div>
+                                    <div class="rule-item"><strong>Regla 5:</strong> Un torneo debe tener al menos dos equipos inscritos antes de programar partidos.</div>
+                                    <div class="rule-item"><strong>Regla 6:</strong> Un jugador no puede estar inscrito dos veces en el mismo equipo para el mismo torneo.</div>
+                                </div>
+                            </div>
+
+                            <!-- Tab: MER -->
+                            <div id="doc-tab-mer" class="doc-tab-panel">
+                                <h3>Modelo Entidad-Relación (MER)</h3>
+                                <p>Relación lógica de datos organizada para eliminar duplicidad:</p>
+                                <pre class="code-block">
+- <strong>usuarios:</strong> Usuarios internos del sistema.
+- <strong>equipos:</strong> Clubes de la liga.
+- <strong>jugadores:</strong> Deportistas.
+- <strong>sedes:</strong> Campos de juego.
+- <strong>torneos:</strong> Copas locales.
+- <strong>equipos_torneo:</strong> Tabla asociativa (N:M) de equipos por torneo.
+- <strong>inscripciones_jugadores:</strong> Tabla asociativa (N:M) de jugadores en un equipo para un torneo. Clave UNIQUE compuesta (id_jugador, id_torneo).
+- <strong>partidos:</strong> Registro del fixture, vinculando local, visitante, torneo, sede, fecha, hora y goles.</pre>
+                                <h4>Script de Base de Datos MySQL</h4>
+                                <p>Revisa los archivos en la carpeta <code>/database/schema.sql</code>, <code>/database/seeds.sql</code> y <code>/database/queries.sql</code> en el repositorio.</p>
+                            </div>
+
+                            <!-- Tab: MVC -->
+                            <div id="doc-tab-mvc" class="doc-tab-panel">
+                                <h3>Patrón MVC Estructurado</h3>
+                                <p>La estructura del software se divide en carpetas claras para facilitar el mantenimiento:</p>
+                                <ul>
+                                    <li><code>/config</code>: Conexiones a bases de datos y configuraciones globales.</li>
+                                    <li><code>/models</code>: Representación de datos físicos y llamadas SQL.</li>
+                                    <li><code>/controllers</code>: Controladores con lógica de negocio y validación de reglas.</li>
+                                    <li><code>/views</code>: Plantillas HTML (como EJS, Jade o Blade) para visualización.</li>
+                                    <li><code>/routes</code>: Mapeo de URL e interceptores de autenticación.</li>
+                                </ul>
+                            </div>
+
+                            <!-- Tab: Casos de Uso -->
+                            <div id="doc-tab-casos_uso" class="doc-tab-panel">
+                                <h3>Casos de Uso Principales</h3>
+                                <p>Los principales flujos descritos para cada actor son:</p>
+                                <ul>
+                                    <li><strong>Administrador:</strong> Registra torneos, equipos, inscribe jugadores y asigna planilleros.</li>
+                                    <li><strong>Planillero:</strong> Edita resultados de partidos, actualiza el estado (En Juego, Finalizado) y asigna sedes.</li>
+                                    <li><strong>Público General:</strong> Observa la tabla de posiciones calculada dinámicamente y el fixture general.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- MODALES DE FORMULARIOS -->
+    
+    <!-- Modal: Torneo -->
+    <div id="tournamentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🏆 Registrar Nuevo Torneo</h3>
+                <span class="close-btn" onclick="closeModal('tournamentModal')">&times;</span>
+            </div>
+            <form id="tournamentForm" onsubmit="handleCreateTournament(event)">
+                <div class="form-group">
+                    <label>Nombre del Torneo</label>
+                    <input type="text" id="tourName" required placeholder="Ej. Torneo Clausura Municipal 2026">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha Inicio</label>
+                        <input type="date" id="tourStart" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha Fin</label>
+                        <input type="date" id="tourEnd" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Estado Inicial</label>
+                    <select id="tourState">
+                        <option value="Borrador">Borrador</option>
+                        <option value="Activo">Activo</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('tournamentModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Torneo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Equipo -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🛡️ Registrar Nuevo Equipo</h3>
+                <span class="close-btn" onclick="closeModal('teamModal')">&times;</span>
+            </div>
+            <form id="teamForm" onsubmit="handleCreateTeam(event)">
+                <div class="form-group">
+                    <label>Nombre del Equipo</label>
+                    <input type="text" id="teamName" required placeholder="Ej. Club Deportivo Oriente">
+                </div>
+                <div class="form-group">
+                    <label>Representante / Delegado</label>
+                    <input type="text" id="teamRepresentative" required placeholder="Ej. Juan Carlos López">
+                </div>
+                <div class="form-group">
+                    <label>Contacto (Teléfono)</label>
+                    <input type="text" id="teamContact" placeholder="Ej. 3123456789">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('teamModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Equipo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Jugador -->
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🏃 Registrar Nuevo Jugador</h3>
+                <span class="close-btn" onclick="closeModal('playerModal')">&times;</span>
+            </div>
+            <form id="playerForm" onsubmit="handleCreatePlayer(event)">
+                <div class="form-group">
+                    <label>Documento de Identidad (Cédula)</label>
+                    <input type="text" id="playerDoc" required placeholder="Ej. 100200300">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombres</label>
+                        <input type="text" id="playerName" required placeholder="Ej. Carlos Mario">
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input type="text" id="playerLastName" required placeholder="Ej. Restrepo Henao">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha de Nacimiento</label>
+                        <input type="date" id="playerBirth" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="text" id="playerPhone" placeholder="Ej. 300400500">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('playerModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Jugador</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Inscribir Jugador en Equipo (Relación N:M de Torneo) -->
+    <div id="enrollPlayerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔗 Inscribir Jugador en Torneo & Equipo</h3>
+                <span class="close-btn" onclick="closeModal('enrollPlayerModal')">&times;</span>
+            </div>
+            <form id="enrollPlayerForm" onsubmit="handleEnrollPlayer(event)">
+                <div class="form-group">
+                    <label>Seleccionar Torneo</label>
+                    <select id="enrollTournament" required onchange="updateEnrollTeamDropdown()">
+                        <option value="1">Torneo Apertura Liga Municipal 2026</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Seleccionar Equipo Participante</label>
+                    <select id="enrollTeam" required>
+                        <!-- Filled dynamically based on tournament -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Seleccionar Jugador</label>
+                    <select id="enrollPlayer" required>
+                        <!-- Filled dynamically -->
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('enrollPlayerModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Registrar Inscripción</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Sede -->
+    <div id="venueModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📍 Registrar Nueva Sede Deportiva</h3>
+                <span class="close-btn" onclick="closeModal('venueModal')">&times;</span>
+            </div>
+            <form id="venueForm" onsubmit="handleCreateVenue(event)">
+                <div class="form-group">
+                    <label>Nombre de la Sede</label>
+                    <input type="text" id="venueName" required placeholder="Ej. Cancha de Grama Sintética Comuna 4">
+                </div>
+                <div class="form-group">
+                    <label>Dirección</label>
+                    <input type="text" id="venueAddress" required placeholder="Ej. Carrera 50 # 12-45">
+                </div>
+                <div class="form-group">
+                    <label>Capacidad Aforo</label>
+                    <input type="number" id="venueCapacity" required min="0" placeholder="Ej. 300">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('venueModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Sede</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Programar Partido -->
+    <div id="matchModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📅 Programar Encuentro Deportivo</h3>
+                <span class="close-btn" onclick="closeModal('matchModal')">&times;</span>
+            </div>
+            <form id="matchForm" onsubmit="handleCreateMatch(event)">
+                <div class="form-group">
+                    <label>Torneo</label>
+                    <select id="matchTournament" required onchange="updateMatchTeamsDropdowns()">
+                        <option value="1">Torneo Apertura Liga Municipal 2026</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Equipo Local</label>
+                        <select id="matchLocalTeam" required>
+                            <!-- Filled dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Equipo Visitante</label>
+                        <select id="matchVisitorTeam" required>
+                            <!-- Filled dynamically -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Sede del Partido</label>
+                    <select id="matchVenue" required>
+                        <!-- Filled dynamically -->
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Fecha</label>
+                        <input type="date" id="matchDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Hora</label>
+                        <input type="time" id="matchTime" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-secondary" onclick="closeModal('matchModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Programar Partido</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Registrar Marcador / Resultados -->
+    <div id="scoreModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>⚽ Cargar Resultado de Partido</h3>
+                <span class="close-btn" onclick="closeModal('scoreModal')">&times;</span>
+            </div>
+            <form id="scoreForm" onsubmit="handleUpdateScore(event)">
+                <input type="hidden" id="scoreMatchId">
+                <div class="score-input-layout">
+                    <div class="team-score-block">
+                        <span class="team-badge" id="scoreLocalName">Local</span>
+                        <input type="number" id="scoreLocalGoals" min="0" required placeholder="0">
+                    </div>
+                    <div class="score-separator">VS</div>
+                    <div class="team-score-block">
+                        <span class="team-badge" id="scoreVisitorName">Visitante</span>
+                        <input type="number" id="scoreVisitorGoals" min="0" required placeholder="0">
+                    </div>
+                </div>
+                <div class="form-group mt-4">
+                    <label>Estado del Partido</label>
+                    <select id="scoreMatchState">
+                        <option value="Finalizado">Finalizado</option>
+                        <option value="En Juego">En Juego</option>
+                        <option value="Cancelado">Cancelado</option>
+                    </select>
+                </div>
+                <div class="modal-footer mt-4">
+                    <button type="button" class="btn-secondary" onclick="closeModal('scoreModal')">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar Resultado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Core App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
