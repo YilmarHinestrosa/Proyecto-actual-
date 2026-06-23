@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,26 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="dark-theme">
     <div class="app-container">
-        
+
         <!-- SIDEBAR -->
         <aside class="sidebar">
             <div class="sidebar-brand">
                 <div class="brand-logo">
-                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
                         <path d="M2 12h20"></path>
                     </svg>
                 </div>
@@ -29,7 +36,7 @@
                     <span>Fútbol Amateur</span>
                 </div>
             </div>
-            
+
             <nav class="sidebar-menu">
                 <button class="menu-item active" data-section="dashboard">
                     <span class="menu-icon">📊</span> Panel Principal
@@ -63,7 +70,7 @@
                     <span class="menu-icon">📚</span> Documentación MER
                 </button>
             </nav>
-            
+
             <div class="sidebar-user">
                 <div class="user-avatar">AD</div>
                 <div class="user-info">
@@ -82,7 +89,7 @@
 
         <!-- MAIN CONTENT -->
         <main class="main-content">
-            
+
             <!-- HEADER -->
             <header class="app-header">
                 <div class="header-search">
@@ -103,7 +110,7 @@
 
             <!-- VIEW SECTIONS CONTAINER -->
             <div class="sections-wrapper">
-                
+
                 <!-- LOGIN SCREEN (OVERLAY IF NOT LOGGED IN, BUT CAN BE TOGGLED FOR CONVENIENCE) -->
                 <div id="login-overlay" class="login-overlay hidden">
                     <div class="login-card">
@@ -138,7 +145,7 @@
                             <p>Resumen general del campeonato y accesos directos.</p>
                         </div>
                     </div>
-                    
+
                     <div class="stats-grid">
                         <div class="stat-card">
                             <div class="stat-icon bg-soft-primary">🏆</div>
@@ -202,7 +209,8 @@
                         <div class="dashboard-card side-card">
                             <div class="card-header">
                                 <h3>📈 Tabla Resumen (Líderes)</h3>
-                                <button class="btn-text" onclick="switchSection('posiciones')">Ver Tabla Completa</button>
+                                <button class="btn-text" onclick="switchSection('posiciones')">Ver Tabla
+                                    Completa</button>
                             </div>
                             <div class="card-body">
                                 <div class="leaderboard-list" id="dashboardLeaderboard">
@@ -284,7 +292,8 @@
                             <p>Registro de fichajes e inscripción en equipos para torneos activos.</p>
                         </div>
                         <div class="header-buttons">
-                            <button class="btn-secondary mr-2" onclick="openModal('enrollPlayerModal')">🔗 Inscribir en Torneo</button>
+                            <button class="btn-secondary mr-2" onclick="openModal('enrollPlayerModal')">🔗 Inscribir en
+                                Torneo</button>
                             <button class="btn-primary" onclick="openModal('playerModal')">+ Nuevo Jugador</button>
                         </div>
                     </div>
@@ -306,6 +315,7 @@
                                         <tr>
                                             <th>Cédula/Documento</th>
                                             <th>Nombre Completo</th>
+                                            <th>Posición</th>
                                             <th>Fecha Nac.</th>
                                             <th>Teléfono</th>
                                             <th>Equipo Actual (Torneo 1)</th>
@@ -353,7 +363,8 @@
                     <div class="section-header">
                         <div>
                             <h2>Programación de Partidos & Resultados</h2>
-                            <p>Agenda fixture validando colisiones de sedes o equipos en tiempo real, e ingresa marcadores.</p>
+                            <p>Agenda fixture validando colisiones de sedes o equipos en tiempo real, e ingresa
+                                marcadores.</p>
                         </div>
                         <button class="btn-primary" onclick="openModal('matchModal')">📅 Programar Partido</button>
                     </div>
@@ -370,7 +381,8 @@
                             <input type="date" id="filterMatchDate" onchange="filterMatchesList()">
                         </div>
                         <button class="btn-text" onclick="clearMatchFilters()">Limpiar Filtros</button>
-                        <button class="btn-secondary" onclick="exportMatchesToCSV()" style="margin-left: auto;">📥 Exportar Fixture (CSV)</button>
+                        <button class="btn-secondary" onclick="exportMatchesToCSV()" style="margin-left: auto;">📥
+                            Exportar Fixture (CSV)</button>
                     </div>
 
                     <div class="card">
@@ -411,7 +423,8 @@
                                 <option value="1">Torneo Apertura Liga Municipal 2026</option>
                             </select>
                         </div>
-                        <button class="btn-secondary" onclick="exportStandingsToCSV()" style="margin-left: auto;">📥 Exportar Tabla (CSV)</button>
+                        <button class="btn-secondary" onclick="exportStandingsToCSV()" style="margin-left: auto;">📥
+                            Exportar Tabla (CSV)</button>
                     </div>
 
                     <div class="card">
@@ -450,14 +463,18 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="calendar-controls" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                            <div class="calendar-controls"
+                                style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
                                 <button class="btn-secondary" id="calPrevMonthBtn" type="button">◀ Anterior</button>
-                                <h3 id="calendarMonthTitle" style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.25rem;">Junio 2026</h3>
+                                <h3 id="calendarMonthTitle"
+                                    style="margin: 0; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 1.25rem;">
+                                    Junio 2026</h3>
                                 <button class="btn-secondary" id="calNextMonthBtn" type="button">Siguiente ▶</button>
                             </div>
-                            
+
                             <div class="calendar-grid-container">
-                                <div class="calendar-weekdays" style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--primary); font-size: 0.85rem; text-transform: uppercase;">
+                                <div class="calendar-weekdays"
+                                    style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; margin-bottom: 10px; color: var(--primary); font-size: 0.85rem; text-transform: uppercase;">
                                     <div>Dom</div>
                                     <div>Lun</div>
                                     <div>Mar</div>
@@ -466,7 +483,8 @@
                                     <div>Vie</div>
                                     <div>Sab</div>
                                 </div>
-                                <div id="calendarDaysGrid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; min-height: 400px;">
+                                <div id="calendarDaysGrid"
+                                    style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; min-height: 400px;">
                                     <!-- Days filled dynamically -->
                                 </div>
                             </div>
@@ -479,7 +497,8 @@
                     <div class="section-header">
                         <div>
                             <h2>Consola de Simulación SQL</h2>
-                            <p>Visualiza y ejecuta consultas SQL directamente sobre la base de datos simulada en memoria.</p>
+                            <p>Visualiza y ejecuta consultas SQL directamente sobre la base de datos simulada en
+                                memoria.</p>
                         </div>
                     </div>
 
@@ -494,7 +513,8 @@
                                 <li onclick="loadSQLQuery('jugadores_equipo')">5. Mostrar Jugadores de Equipo</li>
                                 <li onclick="loadSQLQuery('equipos_torneo')">6. Mostrar Equipos de un Torneo</li>
                                 <li onclick="loadSQLQuery('resultados')">7. Resultados de Partidos</li>
-                                <li onclick="loadSQLQuery('tabla_posiciones')">8. Generar Tabla de Posiciones Completa</li>
+                                <li onclick="loadSQLQuery('tabla_posiciones')">8. Generar Tabla de Posiciones Completa
+                                </li>
                             </ul>
                         </div>
                         <div class="sql-console-panel">
@@ -508,7 +528,8 @@
                             <div class="console-result">
                                 <h4>Resultado de la Consulta</h4>
                                 <div id="sqlQueryResultContainer" class="table-responsive result-table">
-                                    <p class="text-muted">Selecciona una consulta del listado y haz clic en "Ejecutar Consulta" para ver el resultado.</p>
+                                    <p class="text-muted">Selecciona una consulta del listado y haz clic en "Ejecutar
+                                        Consulta" para ver el resultado.</p>
                                 </div>
                             </div>
                         </div>
@@ -536,20 +557,34 @@
                             <!-- Tab: Análisis -->
                             <div id="doc-tab-analisis" class="doc-tab-panel active">
                                 <h3>Análisis del Sistema</h3>
-                                <p>La <strong>Liga Amateur de Fútbol Municipal</strong> requería pasar de un manejo informal mediante hojas de cálculo a un software robusto. Los principales cuellos de botella identificados son:</p>
+                                <p>La <strong>Liga Amateur de Fútbol Municipal</strong> requería pasar de un manejo
+                                    informal mediante hojas de cálculo a un software robusto. Los principales cuellos de
+                                    botella identificados son:</p>
                                 <ul>
-                                    <li><strong>Superposición de horarios en sedes:</strong> Dos o más partidos planificados en la misma cancha de forma simultánea.</li>
-                                    <li><strong>Fuga/Duplicidad de jugadores:</strong> Deportistas jugando en diferentes equipos en la misma temporada del torneo, restando seriedad e infringiendo normas.</li>
-                                    <li><strong>Cálculo erróneo de clasificaciones:</strong> Suma manual lenta y propensa a fallos de puntos, goles y desempates.</li>
+                                    <li><strong>Superposición de horarios en sedes:</strong> Dos o más partidos
+                                        planificados en la misma cancha de forma simultánea.</li>
+                                    <li><strong>Fuga/Duplicidad de jugadores:</strong> Deportistas jugando en diferentes
+                                        equipos en la misma temporada del torneo, restando seriedad e infringiendo
+                                        normas.</li>
+                                    <li><strong>Cálculo erróneo de clasificaciones:</strong> Suma manual lenta y
+                                        propensa a fallos de puntos, goles y desempates.</li>
                                 </ul>
                                 <h4>Reglas de Negocio Codificadas</h4>
                                 <div class="rules-box">
-                                    <div class="rule-item"><strong>Regla 1:</strong> No se pueden programar dos partidos en la misma sede el mismo día y hora (Restricción UNIQUE compuesta y alertas de cruce).</div>
-                                    <div class="rule-item"><strong>Regla 2:</strong> Un equipo no puede jugar dos partidos el mismo día dentro del mismo torneo (Trigger e interceptor).</div>
-                                    <div class="rule-item"><strong>Regla 3:</strong> Un jugador no puede pertenecer a dos equipos diferentes en el mismo torneo (Restricción UNIQUE jugador_torneo).</div>
-                                    <div class="rule-item"><strong>Regla 4:</strong> Solo se pueden registrar resultados de partidos programados o en juego (CHECK de estado).</div>
-                                    <div class="rule-item"><strong>Regla 5:</strong> Un torneo debe tener al menos dos equipos inscritos antes de programar partidos.</div>
-                                    <div class="rule-item"><strong>Regla 6:</strong> Un jugador no puede estar inscrito dos veces en el mismo equipo para el mismo torneo.</div>
+                                    <div class="rule-item"><strong>Regla 1:</strong> No se pueden programar dos partidos
+                                        en la misma sede el mismo día y hora (Restricción UNIQUE compuesta y alertas de
+                                        cruce).</div>
+                                    <div class="rule-item"><strong>Regla 2:</strong> Un equipo no puede jugar dos
+                                        partidos el mismo día dentro del mismo torneo (Trigger e interceptor).</div>
+                                    <div class="rule-item"><strong>Regla 3:</strong> Un jugador no puede pertenecer a
+                                        dos equipos diferentes en el mismo torneo (Restricción UNIQUE jugador_torneo).
+                                    </div>
+                                    <div class="rule-item"><strong>Regla 4:</strong> Solo se pueden registrar resultados
+                                        de partidos programados o en juego (CHECK de estado).</div>
+                                    <div class="rule-item"><strong>Regla 5:</strong> Un torneo debe tener al menos dos
+                                        equipos inscritos antes de programar partidos.</div>
+                                    <div class="rule-item"><strong>Regla 6:</strong> Un jugador no puede estar inscrito
+                                        dos veces en el mismo equipo para el mismo torneo.</div>
                                 </div>
                             </div>
 
@@ -567,18 +602,24 @@
 - <strong>inscripciones_jugadores:</strong> Tabla asociativa (N:M) de jugadores en un equipo para un torneo. Clave UNIQUE compuesta (id_jugador, id_torneo).
 - <strong>partidos:</strong> Registro del fixture, vinculando local, visitante, torneo, sede, fecha, hora y goles.</pre>
                                 <h4>Script de Base de Datos MySQL</h4>
-                                <p>Revisa los archivos en la carpeta <code>/database/schema.sql</code>, <code>/database/seeds.sql</code> y <code>/database/queries.sql</code> en el repositorio.</p>
+                                <p>Revisa los archivos en la carpeta <code>/database/schema.sql</code>,
+                                    <code>/database/seeds.sql</code> y <code>/database/queries.sql</code> en el
+                                    repositorio.</p>
                             </div>
 
                             <!-- Tab: MVC -->
                             <div id="doc-tab-mvc" class="doc-tab-panel">
                                 <h3>Patrón MVC Estructurado</h3>
-                                <p>La estructura del software se divide en carpetas claras para facilitar el mantenimiento:</p>
+                                <p>La estructura del software se divide en carpetas claras para facilitar el
+                                    mantenimiento:</p>
                                 <ul>
-                                    <li><code>/config</code>: Conexiones a bases de datos y configuraciones globales.</li>
+                                    <li><code>/config</code>: Conexiones a bases de datos y configuraciones globales.
+                                    </li>
                                     <li><code>/models</code>: Representación de datos físicos y llamadas SQL.</li>
-                                    <li><code>/controllers</code>: Controladores con lógica de negocio y validación de reglas.</li>
-                                    <li><code>/views</code>: Plantillas HTML (como EJS, Jade o Blade) para visualización.</li>
+                                    <li><code>/controllers</code>: Controladores con lógica de negocio y validación de
+                                        reglas.</li>
+                                    <li><code>/views</code>: Plantillas HTML (como EJS, Jade o Blade) para
+                                        visualización.</li>
                                     <li><code>/routes</code>: Mapeo de URL e interceptores de autenticación.</li>
                                 </ul>
                             </div>
@@ -588,9 +629,12 @@
                                 <h3>Casos de Uso Principales</h3>
                                 <p>Los principales flujos descritos para cada actor son:</p>
                                 <ul>
-                                    <li><strong>Administrador:</strong> Registra torneos, equipos, inscribe jugadores y asigna planilleros.</li>
-                                    <li><strong>Planillero:</strong> Edita resultados de partidos, actualiza el estado (En Juego, Finalizado) y asigna sedes.</li>
-                                    <li><strong>Público General:</strong> Observa la tabla de posiciones calculada dinámicamente y el fixture general.</li>
+                                    <li><strong>Administrador:</strong> Registra torneos, equipos, inscribe jugadores y
+                                        asigna planilleros.</li>
+                                    <li><strong>Planillero:</strong> Edita resultados de partidos, actualiza el estado
+                                        (En Juego, Finalizado) y asigna sedes.</li>
+                                    <li><strong>Público General:</strong> Observa la tabla de posiciones calculada
+                                        dinámicamente y el fixture general.</li>
                                 </ul>
                             </div>
                         </div>
@@ -602,7 +646,7 @@
     </div>
 
     <!-- MODALES DE FORMULARIOS -->
-    
+
     <!-- Modal: Torneo -->
     <div id="tournamentModal" class="modal">
         <div class="modal-content">
@@ -633,7 +677,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-secondary" onclick="closeModal('tournamentModal')">Cancelar</button>
+                    <button type="button" class="btn-secondary"
+                        onclick="closeModal('tournamentModal')">Cancelar</button>
                     <button type="submit" class="btn-primary">Guardar Torneo</button>
                 </div>
             </form>
@@ -659,6 +704,15 @@
                 <div class="form-group">
                     <label>Contacto (Teléfono)</label>
                     <input type="text" id="teamContact" placeholder="Ej. 3123456789">
+                </div>
+                <div class="form-group">
+                    <label>Color Distintivo</label>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <input type="color" id="teamColor" value="#10b981"
+                            style="width: 60px; height: 36px; padding: 2px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer; background: none;">
+                        <span style="font-size: 0.85rem; color: var(--text-secondary);">Identificador visual para
+                            tablas, fixture y calendario</span>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('teamModal')">Cancelar</button>
@@ -700,6 +754,16 @@
                         <input type="text" id="playerPhone" placeholder="Ej. 300400500">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label>Posición de Juego</label>
+                    <select id="playerPosition" required
+                        style="width: 100%; background-color: var(--bg-input); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 12px; color: var(--text-primary); outline: none;">
+                        <option value="Portero">Portero</option>
+                        <option value="Defensa">Defensa</option>
+                        <option value="Mediocampista" selected>Mediocampista</option>
+                        <option value="Delantero">Delantero</option>
+                    </select>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-secondary" onclick="closeModal('playerModal')">Cancelar</button>
                     <button type="submit" class="btn-primary">Guardar Jugador</button>
@@ -735,7 +799,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-secondary" onclick="closeModal('enrollPlayerModal')">Cancelar</button>
+                    <button type="button" class="btn-secondary"
+                        onclick="closeModal('enrollPlayerModal')">Cancelar</button>
                     <button type="submit" class="btn-primary">Registrar Inscripción</button>
                 </div>
             </form>
@@ -864,4 +929,5 @@
     <!-- Core App Logic -->
     <script src="app.js"></script>
 </body>
+
 </html>

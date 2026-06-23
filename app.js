@@ -7,7 +7,7 @@
 // ==========================================
 const state = {
     currentUser: null,
-    
+
     // Semilla: Usuarios (10 registros)
     users: [
         { id: 1, username: 'carlos_admin', email: 'carlos.admin@liga.com', role: 'Admin', active: true },
@@ -24,50 +24,50 @@ const state = {
 
     // Semilla: Equipos (10 registros)
     teams: [
-        { id: 1, name: 'Deportivo Barrio Sur', representative: 'Juan Pérez', contact: '3001234567' },
-        { id: 2, name: 'Los Pinos F.C.', representative: 'Andrés Gómez', contact: '3019876543' },
-        { id: 3, name: 'Empresa Central S.A.', representative: 'Marta Rincón', contact: '3104567890' },
-        { id: 4, name: 'Real Arrabal', representative: 'Esteban Quito', contact: '3157891234' },
-        { id: 5, name: 'Talleres Mecánicos FC', representative: 'Roberto Flores', contact: '3203456789' },
-        { id: 6, name: 'Atlético Industrias', representative: 'Diana Salazar', contact: '3129874561' },
-        { id: 7, name: 'Unión San José', representative: 'Gabriel Castillo', contact: '3176543210' },
-        { id: 8, name: 'La Rivera F.C.', representative: 'Clara Beltrán', contact: '3183216549' },
-        { id: 9, name: 'Comercial del Valle', representative: 'Diego Torres', contact: '3114561239' },
-        { id: 10, name: 'Estrella del Norte', representative: 'Patricia Rojas', contact: '3147894562' }
+        { id: 1, name: 'Deportivo Barrio Sur', representative: 'Juan Pérez', contact: '3001234567', color: '#3b82f6' },
+        { id: 2, name: 'Los Pinos F.C.', representative: 'Andrés Gómez', contact: '3019876543', color: '#10b981' },
+        { id: 3, name: 'Empresa Central S.A.', representative: 'Marta Rincón', contact: '3104567890', color: '#f59e0b' },
+        { id: 4, name: 'Real Arrabal', representative: 'Esteban Quito', contact: '3157891234', color: '#ef4444' },
+        { id: 5, name: 'Talleres Mecánicos FC', representative: 'Roberto Flores', contact: '3203456789', color: '#8b5cf6' },
+        { id: 6, name: 'Atlético Industrias', representative: 'Diana Salazar', contact: '3129874561', color: '#ec4899' },
+        { id: 7, name: 'Unión San José', representative: 'Gabriel Castillo', contact: '3176543210', color: '#06b6d4' },
+        { id: 8, name: 'La Rivera F.C.', representative: 'Clara Beltrán', contact: '3183216549', color: '#f43f5e' },
+        { id: 9, name: 'Comercial del Valle', representative: 'Diego Torres', contact: '3114561239', color: '#14b8a6' },
+        { id: 10, name: 'Estrella del Norte', representative: 'Patricia Rojas', contact: '3147894562', color: '#eab308' }
     ],
 
     // Semilla: Jugadores (30 registros)
     players: [
-        { id: 1, doc: '1001001', name: 'Mateo', lastName: 'Díaz', birthDate: '1995-04-12', phone: '3002001001' },
-        { id: 2, doc: '1001002', name: 'Lucas', lastName: 'Silva', birthDate: '1996-08-22', phone: '3002001002' },
-        { id: 3, doc: '1001003', name: 'Santiago', lastName: 'Rojas', birthDate: '1994-01-15', phone: '3002001003' },
-        { id: 4, doc: '1001004', name: 'Sebastián', lastName: 'Castro', birthDate: '1997-11-30', phone: '3002001004' },
-        { id: 5, doc: '1001005', name: 'Daniel', lastName: 'Mendoza', birthDate: '1993-06-05', phone: '3002001005' },
-        { id: 6, doc: '1001006', name: 'Samuel', lastName: 'Mejía', birthDate: '1998-03-25', phone: '3002001006' },
-        { id: 7, doc: '1001007', name: 'Nicolás', lastName: 'Giraldo', birthDate: '1999-07-19', phone: '3002001007' },
-        { id: 8, doc: '1001008', name: 'Alejandro', lastName: 'Herrera', birthDate: '1995-10-09', phone: '3002001008' },
-        { id: 9, doc: '1001009', name: 'Martín', lastName: 'Gómez', birthDate: '1996-05-14', phone: '3002001009' },
-        { id: 10, doc: '1001010', name: 'Diego', lastName: 'Rodríguez', birthDate: '1994-12-02', phone: '3002001010' },
-        { id: 11, doc: '1001011', name: 'David', lastName: 'Sánchez', birthDate: '1997-09-11', phone: '3002001011' },
-        { id: 12, doc: '1001012', name: 'Felipe', lastName: 'Martínez', birthDate: '1993-02-28', phone: '3002001012' },
-        { id: 13, doc: '1001013', name: 'Tomas', lastName: 'Pérez', birthDate: '1998-08-16', phone: '3002001013' },
-        { id: 14, doc: '1001014', name: 'Juan', lastName: 'García', birthDate: '1999-12-25', phone: '3002001014' },
-        { id: 15, doc: '1001015', name: 'Camilo', lastName: 'López', birthDate: '1995-03-03', phone: '3002001015' },
-        { id: 16, doc: '1001016', name: 'Andrés', lastName: 'González', birthDate: '1996-07-07', phone: '3002001016' },
-        { id: 17, doc: '1001017', name: 'Julián', lastName: 'Cardona', birthDate: '1994-05-20', phone: '3002001017' },
-        { id: 18, doc: '1001018', name: 'Jerónimo', lastName: 'Marín', birthDate: '1997-10-10', phone: '3002001018' },
-        { id: 19, doc: '1001019', name: 'Emilio', lastName: 'Ramírez', birthDate: '1993-04-04', phone: '3002001019' },
-        { id: 20, doc: '1001020', name: 'Matías', lastName: 'Muñoz', birthDate: '1998-11-23', phone: '3002001020' },
-        { id: 21, doc: '1001021', name: 'Leonardo', lastName: 'Vargas', birthDate: '1992-09-08', phone: '3002001021' },
-        { id: 22, doc: '1001022', name: 'Manuel', lastName: 'Álvarez', birthDate: '1995-01-29', phone: '3002001022' },
-        { id: 23, doc: '1001023', name: 'Esteban', lastName: 'Moreno', birthDate: '1996-06-17', phone: '3002001023' },
-        { id: 24, doc: '1001024', name: 'Cristian', lastName: 'Ortiz', birthDate: '1997-03-13', phone: '3002001024' },
-        { id: 25, doc: '1001025', name: 'Hugo', lastName: 'Guerrero', birthDate: '1994-08-08', phone: '3002001025' },
-        { id: 26, doc: '1001026', name: 'Carlos', lastName: 'Ríos', birthDate: '1999-02-02', phone: '3002001026' },
-        { id: 27, doc: '1001027', name: 'Ricardo', lastName: 'Franco', birthDate: '1995-12-12', phone: '3002001027' },
-        { id: 28, doc: '1001028', name: 'Gabriel', lastName: 'Bermúdez', birthDate: '1996-04-30', phone: '3002001028' },
-        { id: 29, doc: '1001029', name: 'Álvaro', lastName: 'Acosta', birthDate: '1993-10-24', phone: '3002001029' },
-        { id: 30, doc: '1001030', name: 'Enrique', lastName: 'Benítez', birthDate: '1998-05-18', phone: '3002001030' }
+        { id: 1, doc: '1001001', name: 'Mateo', lastName: 'Díaz', birthDate: '1995-04-12', phone: '3002001001', position: 'Defensa' },
+        { id: 2, doc: '1001002', name: 'Lucas', lastName: 'Silva', birthDate: '1996-08-22', phone: '3002001002', position: 'Mediocampista' },
+        { id: 3, doc: '1001003', name: 'Santiago', lastName: 'Rojas', birthDate: '1994-01-15', phone: '3002001003', position: 'Delantero' },
+        { id: 4, doc: '1001004', name: 'Sebastián', lastName: 'Castro', birthDate: '1997-11-30', phone: '3002001004', position: 'Portero' },
+        { id: 5, doc: '1001005', name: 'Daniel', lastName: 'Mendoza', birthDate: '1993-06-05', phone: '3002001005', position: 'Defensa' },
+        { id: 6, doc: '1001006', name: 'Samuel', lastName: 'Mejía', birthDate: '1998-03-25', phone: '3002001006', position: 'Mediocampista' },
+        { id: 7, doc: '1001007', name: 'Nicolás', lastName: 'Giraldo', birthDate: '1999-07-19', phone: '3002001007', position: 'Delantero' },
+        { id: 8, doc: '1001008', name: 'Alejandro', lastName: 'Herrera', birthDate: '1995-10-09', phone: '3002001008', position: 'Portero' },
+        { id: 9, doc: '1001009', name: 'Martín', lastName: 'Gómez', birthDate: '1996-05-14', phone: '3002001009', position: 'Defensa' },
+        { id: 10, doc: '1001010', name: 'Diego', lastName: 'Rodríguez', birthDate: '1994-12-02', phone: '3002001010', position: 'Mediocampista' },
+        { id: 11, doc: '1001011', name: 'David', lastName: 'Sánchez', birthDate: '1997-09-11', phone: '3002001011', position: 'Delantero' },
+        { id: 12, doc: '1001012', name: 'Felipe', lastName: 'Martínez', birthDate: '1993-02-28', phone: '3002001012', position: 'Portero' },
+        { id: 13, doc: '1001013', name: 'Tomas', lastName: 'Pérez', birthDate: '1998-08-16', phone: '3002001013', position: 'Defensa' },
+        { id: 14, doc: '1001014', name: 'Juan', lastName: 'García', birthDate: '1999-12-25', phone: '3002001014', position: 'Mediocampista' },
+        { id: 15, doc: '1001015', name: 'Camilo', lastName: 'López', birthDate: '1995-03-03', phone: '3002001015', position: 'Delantero' },
+        { id: 16, doc: '1001016', name: 'Andrés', lastName: 'González', birthDate: '1996-07-07', phone: '3002001016', position: 'Portero' },
+        { id: 17, doc: '1001017', name: 'Julián', lastName: 'Cardona', birthDate: '1994-05-20', phone: '3002001017', position: 'Defensa' },
+        { id: 18, doc: '1001018', name: 'Jerónimo', lastName: 'Marín', birthDate: '1997-10-10', phone: '3002001018', position: 'Mediocampista' },
+        { id: 19, doc: '1001019', name: 'Emilio', lastName: 'Ramírez', birthDate: '1993-04-04', phone: '3002001019', position: 'Delantero' },
+        { id: 20, doc: '1001020', name: 'Matías', lastName: 'Muñoz', birthDate: '1998-11-23', phone: '3002001020', position: 'Portero' },
+        { id: 21, doc: '1001021', name: 'Leonardo', lastName: 'Vargas', birthDate: '1992-09-08', phone: '3002001021', position: 'Defensa' },
+        { id: 22, doc: '1001022', name: 'Manuel', lastName: 'Álvarez', birthDate: '1995-01-29', phone: '3002001022', position: 'Mediocampista' },
+        { id: 23, doc: '1001023', name: 'Esteban', lastName: 'Moreno', birthDate: '1996-06-17', phone: '3002001023', position: 'Delantero' },
+        { id: 24, doc: '1001024', name: 'Cristian', lastName: 'Ortiz', birthDate: '1997-03-13', phone: '3002001024', position: 'Portero' },
+        { id: 25, doc: '1001025', name: 'Hugo', lastName: 'Guerrero', birthDate: '1994-08-08', phone: '3002001025', position: 'Defensa' },
+        { id: 26, doc: '1001026', name: 'Carlos', lastName: 'Ríos', birthDate: '1999-02-02', phone: '3002001026', position: 'Mediocampista' },
+        { id: 27, doc: '1001027', name: 'Ricardo', lastName: 'Franco', birthDate: '1995-12-12', phone: '3002001027', position: 'Delantero' },
+        { id: 28, doc: '1001028', name: 'Gabriel', lastName: 'Bermúdez', birthDate: '1996-04-30', phone: '3002001028', position: 'Portero' },
+        { id: 29, doc: '1001029', name: 'Álvaro', lastName: 'Acosta', birthDate: '1993-10-24', phone: '3002001029', position: 'Defensa' },
+        { id: 30, doc: '1001030', name: 'Enrique', lastName: 'Benítez', birthDate: '1998-05-18', phone: '3002001030', position: 'Mediocampista' }
     ],
 
     // Semilla: Sedes (5 registros)
@@ -134,7 +134,7 @@ const state = {
         { id: 4, tournamentId: 1, localTeamId: 2, visitorTeamId: 3, venueId: 1, date: '2026-06-08', time: '14:00', localGoals: 1, visitorGoals: 2, state: 'Finalizado' },
         { id: 5, tournamentId: 1, localTeamId: 4, visitorTeamId: 5, venueId: 4, date: '2026-06-08', time: '16:00', localGoals: 4, visitorGoals: 1, state: 'Finalizado' },
         { id: 6, tournamentId: 1, localTeamId: 6, visitorTeamId: 1, venueId: 5, date: '2026-06-09', time: '14:00', localGoals: 2, visitorGoals: 2, state: 'Finalizado' },
-        
+
         { id: 7, tournamentId: 1, localTeamId: 1, visitorTeamId: 3, venueId: 1, date: '2026-06-15', time: '14:00', localGoals: null, visitorGoals: null, state: 'Programado' },
         { id: 8, tournamentId: 1, localTeamId: 2, visitorTeamId: 5, venueId: 2, date: '2026-06-15', time: '16:00', localGoals: null, visitorGoals: null, state: 'Programado' },
         { id: 9, tournamentId: 1, localTeamId: 4, visitorTeamId: 6, venueId: 3, date: '2026-06-16', time: '14:00', localGoals: null, visitorGoals: null, state: 'Programado' },
@@ -180,13 +180,13 @@ JOIN sedes s ON p.id_sede = s.id_sede
 WHERE p.id_equipo_local = 1 OR p.id_equipo_visitante = 1
 ORDER BY p.fecha DESC;`,
 
-    jugadores_equipo: `SELECT j.id_jugador, j.documento_identidad, j.nombre, j.apellido, j.fecha_nacimiento, ij.fecha_registro
+    jugadores_equipo: `SELECT j.id_jugador, j.documento_identidad, j.nombre, j.apellido, j.posicion, j.fecha_nacimiento, ij.fecha_registro
 FROM inscripciones_jugadores ij
 JOIN jugadores j ON ij.id_jugador = j.id_jugador
 WHERE ij.id_equipo = 2 AND ij.id_torneo = 1
 ORDER BY j.apellido ASC, j.nombre ASC;`,
 
-    equipos_torneo: `SELECT e.id_equipo, e.nombre_equipo, e.representante, et.fecha_inscripcion
+    equipos_torneo: `SELECT e.id_equipo, e.nombre_equipo, e.representante, e.contacto, e.color, et.fecha_inscripcion
 FROM equipos_torneo et
 JOIN equipos e ON et.id_equipo = e.id_equipo
 WHERE et.id_torneo = 1
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Consola SQL
     document.getElementById('runSqlQueryBtn').addEventListener('click', executeSimulatedQuery);
-    
+
     // Buscador Global Reactivo
     const globalSearchInput = document.getElementById('globalSearch');
     if (globalSearchInput) {
@@ -305,7 +305,7 @@ function handleLogin(e) {
 
     // Buscar en usuarios semilla
     const matchedUser = state.users.find(u => u.email === email);
-    
+
     if (matchedUser && pass === 'admin123') {
         if (!matchedUser.active) {
             showToast('El usuario está inactivo. Contacte al administrador.', 'error');
@@ -423,7 +423,7 @@ function updateSelectors() {
     // Rellenar filtro de equipos en vista jugadores
     const filterPlayerTeam = document.getElementById('filterPlayerTeam');
     if (filterPlayerTeam) {
-        filterPlayerTeam.innerHTML = `<option value="all">-- Todos los Equipos --</option>` + 
+        filterPlayerTeam.innerHTML = `<option value="all">-- Todos los Equipos --</option>` +
             state.teams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
     }
 }
@@ -436,7 +436,7 @@ function updateEnrollTeamDropdown() {
         const enrolledTeamIds = state.teamsTournaments
             .filter(et => et.tournamentId === tournamentId)
             .map(et => et.teamId);
-        
+
         const enrolledTeams = state.teams.filter(t => enrolledTeamIds.includes(t.id));
         select.innerHTML = enrolledTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
     }
@@ -451,13 +451,13 @@ function updateMatchTeamsDropdowns() {
         const enrolledTeamIds = state.teamsTournaments
             .filter(et => et.tournamentId === tournamentId)
             .map(et => et.teamId);
-        
+
         const enrolledTeams = state.teams.filter(t => enrolledTeamIds.includes(t.id));
         const optionsHTML = enrolledTeams.map(t => `<option value="${t.id}">${t.name}</option>`).join('');
-        
+
         localSelect.innerHTML = optionsHTML;
         visitorSelect.innerHTML = optionsHTML;
-        
+
         if (visitorSelect.options.length > 1) {
             visitorSelect.selectedIndex = 1; // Seleccionar el segundo por defecto para que no sean iguales
         }
@@ -483,14 +483,24 @@ function renderDashboard() {
     } else {
         tbody.innerHTML = upcoming.map(m => {
             const tour = state.tournaments.find(t => t.id === m.tournamentId)?.name || 'Sin torneo';
-            const loc = state.teams.find(t => t.id === m.localTeamId)?.name || 'L';
-            const vis = state.teams.find(t => t.id === m.visitorTeamId)?.name || 'V';
+            const locTeam = state.teams.find(t => t.id === m.localTeamId);
+            const visTeam = state.teams.find(t => t.id === m.visitorTeamId);
+            const loc = locTeam ? locTeam.name : 'L';
+            const vis = visTeam ? visTeam.name : 'V';
+            const locColor = locTeam ? (locTeam.color || '#10b981') : '#10b981';
+            const visColor = visTeam ? (visTeam.color || '#10b981') : '#10b981';
             const venue = state.venues.find(v => v.id === m.venueId)?.name || 'Sede';
             return `
                 <tr>
                     <td>${m.date}</td>
                     <td><strong>${tour.split(' ')[1] || tour}</strong></td>
-                    <td>${loc} <span class="text-muted">vs</span> ${vis}</td>
+                    <td style="white-space: nowrap;">
+                        <span class="team-color-dot" style="background-color: ${locColor}; box-shadow: 0 0 6px ${locColor};"></span>
+                        <span>${loc}</span>
+                        <span class="text-muted" style="margin: 0 4px;">vs</span>
+                        <span class="team-color-dot" style="background-color: ${visColor}; box-shadow: 0 0 6px ${visColor};"></span>
+                        <span>${vis}</span>
+                    </td>
                     <td>${venue.split(' ')[0]}...</td>
                     <td>${m.time}</td>
                     <td><span class="status-badge programado">${m.state}</span></td>
@@ -509,10 +519,16 @@ function renderDashboard() {
             const totalG = l.gf + l.gc;
             const gfPercentage = totalG > 0 ? (l.gf / totalG) * 100 : 50;
             const gcPercentage = totalG > 0 ? (l.gc / totalG) * 100 : 50;
+            const team = state.teams.find(t => t.name === l.name);
+            const teamColor = team ? (team.color || '#10b981') : '#10b981';
             return `
                 <div class="leaderboard-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
                     <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-                        <span class="leader-name"><strong>#${index + 1}</strong> ${l.name}</span>
+                        <span class="leader-name" style="display: flex; align-items: center;">
+                            <strong>#${index + 1}</strong>
+                            <span class="team-color-dot" style="background-color: ${teamColor}; box-shadow: 0 0 6px ${teamColor}; margin-left: 6px;"></span>
+                            <span>${l.name}</span>
+                        </span>
                         <span class="leader-pts">${l.pts} PTS</span>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
@@ -521,7 +537,7 @@ function renderDashboard() {
                             <span>Goles Contra: ${l.gc}</span>
                         </div>
                         <div class="bar-container" style="background: rgba(255,255,255,0.05); height: 8px; border-radius: 4px; overflow: hidden; display: flex; width: 100%;">
-                            <div style="background: var(--primary); width: ${gfPercentage}%; height: 100%;"></div>
+                            <div style="background: ${teamColor}; width: ${gfPercentage}%; height: 100%;"></div>
                             <div style="background: var(--danger); width: ${gcPercentage}%; height: 100%;"></div>
                         </div>
                     </div>
@@ -554,23 +570,29 @@ function renderTournaments() {
 // RENDER: Equipos
 function renderTeams() {
     const tbody = document.getElementById('teamsTable').querySelector('tbody');
-    tbody.innerHTML = state.teams.map(t => `
-        <tr>
-            <td><strong>${t.name}</strong></td>
-            <td>${t.representative}</td>
-            <td>${t.contact || 'No registrado'}</td>
-            <td>
-                <button class="btn-danger btn-sm" onclick="handleDeleteTeam(${t.id})">Eliminar</button>
-            </td>
-        </tr>
-    `).join('');
+    tbody.innerHTML = state.teams.map(t => {
+        const teamColor = t.color || '#10b981';
+        return `
+            <tr>
+                <td style="white-space: nowrap;">
+                    <span class="team-color-dot" style="background-color: ${teamColor}; box-shadow: 0 0 6px ${teamColor};"></span>
+                    <strong>${t.name}</strong>
+                </td>
+                <td>${t.representative}</td>
+                <td>${t.contact || 'No registrado'}</td>
+                <td>
+                    <button class="btn-danger btn-sm" onclick="handleDeleteTeam(${t.id})">Eliminar</button>
+                </td>
+            </tr>
+        `;
+    }).join('');
 }
 
 // RENDER: Jugadores
 function renderPlayers() {
     const filterTeamVal = document.getElementById('filterPlayerTeam').value;
     const tbody = document.getElementById('playersTable').querySelector('tbody');
-    
+
     let filteredPlayers = state.players;
     if (filterTeamVal !== 'all') {
         const teamId = parseInt(filterTeamVal);
@@ -583,15 +605,30 @@ function renderPlayers() {
     tbody.innerHTML = filteredPlayers.map(p => {
         // Encontrar equipo actual en Torneo 1
         const reg = state.playerRegistrations.find(pr => pr.playerId === p.id && pr.tournamentId === 1);
-        const teamName = reg ? (state.teams.find(t => t.id === reg.teamId)?.name || '-') : '<span class="text-danger">Sin Equipo</span>';
-        
+        let teamNameHtml = '<span class="text-danger">Sin Equipo</span>';
+        if (reg) {
+            const team = state.teams.find(t => t.id === reg.teamId);
+            if (team) {
+                const teamColor = team.color || '#10b981';
+                teamNameHtml = `
+                    <span class="team-color-dot" style="background-color: ${teamColor}; box-shadow: 0 0 6px ${teamColor};"></span>
+                    <span>${team.name}</span>
+                `;
+            }
+        }
+
+        // Posición
+        const position = p.position || 'Mediocampista';
+        const posClass = position.toLowerCase(); // portero, defensa, mediocampista, delantero
+
         return `
             <tr>
                 <td><code>${p.doc}</code></td>
                 <td><strong>${p.lastName}, ${p.name}</strong></td>
+                <td><span class="badge-posicion ${posClass}">${position}</span></td>
                 <td>${p.birthDate}</td>
                 <td>${p.phone || '-'}</td>
-                <td>${teamName}</td>
+                <td style="white-space: nowrap;">${teamNameHtml}</td>
                 <td>
                     <button class="btn-danger btn-sm" onclick="handleDeletePlayer(${p.id})">Desvincular</button>
                 </td>
@@ -619,7 +656,7 @@ function renderVenues() {
 function renderMatches() {
     const tournamentId = parseInt(document.getElementById('filterMatchTournament').value);
     const dateVal = document.getElementById('filterMatchDate').value;
-    
+
     let filtered = state.matches.filter(m => m.tournamentId === tournamentId);
     if (dateVal) {
         filtered = filtered.filter(m => m.date === dateVal);
@@ -632,13 +669,18 @@ function renderMatches() {
     }
 
     tbody.innerHTML = filtered.map(m => {
-        const loc = state.teams.find(t => t.id === m.localTeamId)?.name || 'L';
-        const vis = state.teams.find(t => t.id === m.visitorTeamId)?.name || 'V';
+        const locTeam = state.teams.find(t => t.id === m.localTeamId);
+        const visTeam = state.teams.find(t => t.id === m.visitorTeamId);
+        const loc = locTeam ? locTeam.name : 'L';
+        const vis = visTeam ? visTeam.name : 'V';
+        const locColor = locTeam ? (locTeam.color || '#10b981') : '#10b981';
+        const visColor = visTeam ? (visTeam.color || '#10b981') : '#10b981';
+
         const venue = state.venues.find(v => v.id === m.venueId)?.name || 'Sede';
         const score = m.state === 'Finalizado' || m.state === 'En Juego'
             ? `<span class="score-badge">${m.localGoals} - ${m.visitorGoals}</span>`
             : `<span class="score-badge">VS</span>`;
-            
+
         const isPlanilleroOrAdmin = state.currentUser && (state.currentUser.role === 'Admin' || state.currentUser.role === 'Planillero');
         const actionBtn = isPlanilleroOrAdmin
             ? `<button class="btn-primary btn-sm" onclick="openScoreModal(${m.id})">⚽ Marcador</button>`
@@ -653,9 +695,15 @@ function renderMatches() {
             <tr>
                 <td>${m.date} - ${m.time}</td>
                 <td>${venue}</td>
-                <td class="text-right"><strong>${loc}</strong></td>
+                <td class="text-right" style="white-space: nowrap;">
+                    <strong>${loc}</strong>
+                    <span class="team-color-dot" style="background-color: ${locColor}; box-shadow: 0 0 6px ${locColor}; margin-left: 8px; margin-right: 0;"></span>
+                </td>
                 <td class="text-center">${score}</td>
-                <td><strong>${vis}</strong></td>
+                <td style="white-space: nowrap;">
+                    <span class="team-color-dot" style="background-color: ${visColor}; box-shadow: 0 0 6px ${visColor};"></span>
+                    <strong>${vis}</strong>
+                </td>
                 <td><span class="status-badge ${statusClass}">${m.state}</span></td>
                 <td>${actionBtn}</td>
             </tr>
@@ -721,6 +769,7 @@ function handleCreateTeam(e) {
     const name = document.getElementById('teamName').value.trim();
     const rep = document.getElementById('teamRepresentative').value.trim();
     const contact = document.getElementById('teamContact').value.trim();
+    const color = document.getElementById('teamColor').value;
 
     // Validar nombre único
     if (state.teams.some(t => t.name.toLowerCase() === name.toLowerCase())) {
@@ -732,7 +781,8 @@ function handleCreateTeam(e) {
         id: state.teams.length + 1,
         name,
         representative: rep,
-        contact
+        contact,
+        color
     };
 
     state.teams.push(newTeam);
@@ -750,6 +800,7 @@ function handleCreatePlayer(e) {
     const lastName = document.getElementById('playerLastName').value.trim();
     const birth = document.getElementById('playerBirth').value;
     const phone = document.getElementById('playerPhone').value.trim();
+    const position = document.getElementById('playerPosition').value;
 
     // Validar documento único
     if (state.players.some(p => p.doc === doc)) {
@@ -763,7 +814,8 @@ function handleCreatePlayer(e) {
         name,
         lastName,
         birthDate: birth,
-        phone
+        phone,
+        position
     };
 
     state.players.push(newPlayer);
@@ -839,7 +891,7 @@ function handleEnrollPlayer(e) {
 
     // REGLA DE NEGOCIO 3 & 6: Buscar inscripciones previas en este torneo
     const existingReg = state.playerRegistrations.find(pr => pr.playerId === playerId && pr.tournamentId === tournamentId);
-    
+
     if (existingReg) {
         if (existingReg.teamId === teamId) {
             // Regla 6: Un jugador no puede estar inscrito dos veces en el mismo equipo para el mismo torneo.
@@ -890,9 +942,9 @@ function handleCreateMatch(e) {
     }
 
     // REGLA DE NEGOCIO 2: Un equipo no puede jugar dos partidos el mismo día dentro del mismo torneo
-    const localConflict = state.matches.some(m => 
-        m.tournamentId === tournamentId && 
-        m.date === date && 
+    const localConflict = state.matches.some(m =>
+        m.tournamentId === tournamentId &&
+        m.date === date &&
         (m.localTeamId === localTeamId || m.visitorTeamId === localTeamId)
     );
     if (localConflict) {
@@ -901,9 +953,9 @@ function handleCreateMatch(e) {
         return;
     }
 
-    const visitorConflict = state.matches.some(m => 
-        m.tournamentId === tournamentId && 
-        m.date === date && 
+    const visitorConflict = state.matches.some(m =>
+        m.tournamentId === tournamentId &&
+        m.date === date &&
         (m.localTeamId === visitorTeamId || m.visitorTeamId === visitorTeamId)
     );
     if (visitorConflict) {
@@ -1087,20 +1139,27 @@ function loadStandingsTable() {
         return;
     }
 
-    tbody.innerHTML = standings.map((s, index) => `
-        <tr>
-            <td><strong>${index + 1}</strong></td>
-            <td><strong>${s.name}</strong></td>
-            <td>${s.pj}</td>
-            <td>${s.pg}</td>
-            <td>${s.pe}</td>
-            <td>${s.pp}</td>
-            <td>${s.gf}</td>
-            <td>${s.gc}</td>
-            <td>${s.dg >= 0 ? '+' + s.dg : s.dg}</td>
-            <td class="text-primary font-bold">${s.pts}</td>
-        </tr>
-    `).join('');
+    tbody.innerHTML = standings.map((s, index) => {
+        const team = state.teams.find(t => t.name === s.name);
+        const teamColor = team ? (team.color || '#10b981') : '#10b981';
+        return `
+            <tr>
+                <td><strong>${index + 1}</strong></td>
+                <td style="white-space: nowrap;">
+                    <span class="team-color-dot" style="background-color: ${teamColor}; box-shadow: 0 0 6px ${teamColor};"></span>
+                    <strong>${s.name}</strong>
+                </td>
+                <td>${s.pj}</td>
+                <td>${s.pg}</td>
+                <td>${s.pe}</td>
+                <td>${s.pp}</td>
+                <td>${s.gf}</td>
+                <td>${s.gc}</td>
+                <td>${s.dg >= 0 ? '+' + s.dg : s.dg}</td>
+                <td class="text-primary font-bold">${s.pts}</td>
+            </tr>
+        `;
+    }).join('');
 }
 
 // ==========================================
@@ -1116,7 +1175,7 @@ function loadSQLQuery(key) {
             li.classList.remove('active');
         }
     });
-    
+
     document.getElementById('sqlQueryTextarea').value = sqlQueries[key];
     document.getElementById('sqlQueryResultContainer').innerHTML = `<p class="text-muted">Editor listo. Haz clic en "Ejecutar Consulta".</p>`;
 }
@@ -1188,7 +1247,7 @@ function executeSimulatedQuery() {
                     ]);
                 break;
             case 'jugadores_equipo':
-                headers = ['id_jugador', 'documento_identidad', 'nombre', 'apellido', 'fecha_nacimiento', 'fecha_registro'];
+                headers = ['id_jugador', 'documento_identidad', 'nombre', 'apellido', 'posicion', 'fecha_nacimiento', 'fecha_registro'];
                 const pIds = state.playerRegistrations
                     .filter(pr => pr.teamId === 2 && pr.tournamentId === 1)
                     .map(pr => pr.playerId);
@@ -1199,12 +1258,13 @@ function executeSimulatedQuery() {
                         p.doc,
                         p.name,
                         p.lastName,
+                        p.position || 'Mediocampista',
                         p.birthDate,
                         '2026-06-09'
                     ]);
                 break;
             case 'equipos_torneo':
-                headers = ['id_equipo', 'nombre_equipo', 'representante', 'fecha_inscripcion'];
+                headers = ['id_equipo', 'nombre_equipo', 'representante', 'contacto', 'color', 'fecha_inscripcion'];
                 const tIds = state.teamsTournaments
                     .filter(et => et.tournamentId === 1)
                     .map(et => et.teamId);
@@ -1214,6 +1274,8 @@ function executeSimulatedQuery() {
                         t.id,
                         t.name,
                         t.representative,
+                        t.contact || 'NULL',
+                        t.color || '#10b981',
                         '2026-06-09'
                     ]);
                 break;
@@ -1296,7 +1358,7 @@ function showToast(message, type = 'success') {
     const container = document.getElementById('toastContainer');
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
-    
+
     let icon = '✔️';
     if (type === 'error') icon = '❌';
     if (type === 'warning') icon = '⚠️';
@@ -1310,7 +1372,7 @@ function showToast(message, type = 'success') {
     `;
 
     container.appendChild(toast);
-    
+
     // Auto remover en 5 segundos
     setTimeout(() => {
         if (toast.parentElement) {
@@ -1331,7 +1393,7 @@ function handleGlobalSearch(e) {
     tableRows.forEach(row => {
         // Ignorar la fila de sin resultados
         if (row.cells.length === 1 && row.querySelector('.text-muted')) return;
-        
+
         const rowText = row.textContent.toLowerCase();
         if (rowText.includes(query)) {
             row.style.display = '';
@@ -1345,7 +1407,7 @@ function exportStandingsToCSV() {
     const tournamentId = parseInt(document.getElementById('standingsTournamentSelect').value);
     const tournamentName = state.tournaments.find(t => t.id === tournamentId)?.name || 'torneo';
     const standings = calculateStandings(tournamentId);
-    
+
     if (standings.length === 0) {
         showToast('No hay datos para exportar.', 'warning');
         return;
@@ -1436,7 +1498,7 @@ function renderCalendar() {
     for (let day = 1; day <= totalDays; day++) {
         const dayCell = document.createElement('div');
         dayCell.className = 'calendar-day';
-        
+
         if (today.getFullYear() === year && today.getMonth() === month && today.getDate() === day) {
             dayCell.classList.add('today');
         }
@@ -1450,16 +1512,20 @@ function renderCalendar() {
         if (dayMatches.length > 0) {
             eventsHTML = `<div class="calendar-day-events">`;
             dayMatches.forEach(m => {
-                const loc = state.teams.find(t => t.id === m.localTeamId)?.name || 'L';
-                const vis = state.teams.find(t => t.id === m.visitorTeamId)?.name || 'V';
-                
-                const locShort = loc.split(' ').slice(0,2).map(w => w[0]).join('').substring(0,3).toUpperCase();
-                const visShort = vis.split(' ').slice(0,2).map(w => w[0]).join('').substring(0,3).toUpperCase();
+                const locTeam = state.teams.find(t => t.id === m.localTeamId);
+                const visTeam = state.teams.find(t => t.id === m.visitorTeamId);
+                const loc = locTeam ? locTeam.name : 'L';
+                const vis = visTeam ? visTeam.name : 'V';
+                const locColor = locTeam ? (locTeam.color || '#10b981') : '#10b981';
+
+                const locShort = loc.split(' ').slice(0, 2).map(w => w[0]).join('').substring(0, 3).toUpperCase();
+                const visShort = vis.split(' ').slice(0, 2).map(w => w[0]).join('').substring(0, 3).toUpperCase();
                 const score = m.state === 'Finalizado' ? ` (${m.localGoals}-${m.visitorGoals})` : '';
                 const titleTooltip = `${loc} vs ${vis} en ${state.venues.find(v => v.id === m.venueId)?.name || 'Sede'} a las ${m.time}`;
 
                 eventsHTML += `
                     <div class="calendar-event-badge ${m.state.toLowerCase()}" 
+                         style="border-left-color: ${locColor} !important;"
                          title="${titleTooltip}" 
                          onclick="handleCalendarEventClick(${m.id})">
                         ${m.time} ${locShort} vs ${visShort}${score}
